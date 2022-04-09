@@ -2,7 +2,7 @@
     <div class="fx-sitemap__head">
         <img src="<?php echo $path_url; ?>/assets/img/webfx-light.png" alt="WEB FX"> <span>- Sitemap</span>
     </div>
-    <form method="post" action="options.php">
+    <form id="fx-sitemap-form" method="post" action="options.php">
         <?php //settings_fields('fx_sitemap'); ?>
         <div class="fx-sitemap-content__wrapper">
             <?php 

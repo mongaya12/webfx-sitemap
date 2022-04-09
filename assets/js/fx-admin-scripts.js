@@ -75,7 +75,19 @@ var FX = ( function( FX, $ ) {
                 $('#' + currentSelect ).val(jsonString)
             });
 
-
+            $(document).ready(function(){
+                var form = $('#fx-sitemap-form'),
+                    original = form.serialize()
+            
+                form.submit(function(){
+                    window.onbeforeunload = null
+                })
+            
+                window.onbeforeunload = function(){
+                    if (form.serialize() != original)
+                        return 'Are you sure you want to leave?'
+                }
+            })
         }
 	};
 
