@@ -146,12 +146,14 @@ Class FX_Sitemap_Shortcode extends FX_Sitemap
         
 
         $excluded_posts_option  = get_option('fx_sitemap_select_exclude_settings_' . self::convert_slug( $post_type ) );
-       
-        if( ! $excluded_posts_option )
-            return;
-
         $decode_json_posts      = json_decode( $excluded_posts_option, true );
-        $excluded_posts         = implode( ',', $decode_json_posts );
+
+        if( $decode_json_posts ){
+            $excluded_posts         = implode( ',', $decode_json_posts );
+        } else {
+            $excluded_posts         = '';
+        }
+        
         $post_type_label        = get_post_type_object( $post_type )->label;
         $atts                   = [ 'exclude'   => $excluded_posts ];
         $wp_list_pages          = self::is_post_type_page( $post_type, $atts );
