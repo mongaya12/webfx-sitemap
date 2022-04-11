@@ -305,17 +305,18 @@ Class FX_Sitemap
         );
         
         $post_types = get_post_types( $args, 'names' );
-
+        
         if( ! $post_types )
             return;
             
+        $ctr = 1;
         foreach( $post_types as $post_type ) {
-            $taxonomies = get_object_taxonomies( $post_type );
+            $taxonomies = get_object_taxonomies( $post_type ); 
             if( ! empty( $taxonomies ) ) {
-                $ctr = 1;
+               
                 foreach( $taxonomies as $tax ) {
-                    $terms                      = get_terms( $tax, [ 'hide_empty' => false ] );
-                    $term_label                 = get_taxonomy( $tax )->label;
+                    $terms                          = get_terms( $tax, [ 'hide_empty' => false ] );
+                    $term_label                     = get_taxonomy( $tax )->label;
                     $taxonomy[$ctr]['label']        = $term_label;
                     $taxonomy[$ctr]['taxonomy']     = $tax;
                     $taxonomy[$ctr]['term']         = $terms;
