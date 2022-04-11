@@ -311,8 +311,7 @@ Class FX_Sitemap_Shortcode extends FX_Sitemap
         $exclude_menu_ids   = get_option('fx_sitemap_select_exclude_settings_menu_' . self::convert_slug( $menu_slug ) );
         $decode_menu_ids    = json_decode( $exclude_menu_ids, true );
         $menu_object        = wp_get_nav_menu_object( $menu_slug );
-        $nav_items          = wp_get_nav_menu_items( $menu_object->term_id );
-        $arr_nav_items      = json_decode(json_encode($nav_items), true); ##For safety convert object to array
+        $nav_ids            = $decode_menu_ids;
         
         ob_start();
         include parent::$plugin_path_inc . '/shortcodes/content-post.php';

@@ -41,20 +41,16 @@
         </ul>
     <?php } ?>
 
-    <?php if( isset( $arr_nav_items ) ) { ?>
-        <ul class="fx-sitemap__wp-list fx-sitemap__wp-list-<?php echo $menu_slug; ?>">
+    <?php if( isset( $menu_object ) ) { ?>
+        <div class="fx-sitemap__wp-list fx-sitemap__wp-list-<?php echo $menu_slug; ?>">
             <?php 
-                foreach( $arr_nav_items as $post ) {
-                    if( ! in_array( $post['ID'], $decode_menu_ids ) ) {
-                        echo sprintf(
-                            '<li><a href="%s" id="%s" >%s</a></li>',
-                            get_permalink( $post['ID'] ),
-                            $post['ID'],
-                            $post['title'],
-                        );
-                    }
-                }
+            if( $nav_ids ) {
+                $args = array( 'menu' => $menu_object->slug, 'walker' => new Fx_Nav_Walker( $nav_ids )  );
+            } else {
+                $args = array( 'menu' => $menu_object->slug );
+            }
+                wp_nav_menu( $args ); 
             ?>
-        </ul>
+        </div>
     <?php } ?>
 </div>

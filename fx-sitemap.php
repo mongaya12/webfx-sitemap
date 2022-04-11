@@ -357,7 +357,7 @@ Class FX_Sitemap
         self::$theme_base_url   = get_stylesheet_directory_uri();
 
         require_once( self::$plugin_path . '/helper-functions.php' );
-
+        require_once( self::$plugin_path . '/fx-nav-walker.php' );
         require_once( self::$plugin_path . '/fx-sitemap-shortcode.php' );
     }
 }
