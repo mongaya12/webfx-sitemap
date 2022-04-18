@@ -27,11 +27,11 @@ Class FX_Sitemap_Shortcode extends FX_Sitemap
      * Determine what condition, logical and methods to work on.
      * 
      * @param array $atts
+     * @return string|null
+     * 
      */
     public function shortcode_string( $atts ) 
     {
-        $result = '';
-
         if( $atts ) {
             //check sitemaps available attributes
             if( isset( $atts['only'] ) ) {
@@ -198,7 +198,7 @@ Class FX_Sitemap_Shortcode extends FX_Sitemap
     }
 
     /**
-     * Check if post type is page and attributes
+     * Check if post type is page with attributes
      * 
      * @param string $post_type
      * @param array $atts

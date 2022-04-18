@@ -41,7 +41,7 @@ Class FX_Sitemap
     /**
      * Return list of all available Posts Type
      * 
-     * @return Array|Null
+     * @return array|null
      */
     public function available_post_types()
     {
@@ -95,9 +95,7 @@ Class FX_Sitemap
      * @return void
      */
     public function save_settings() {
-        $obj_cpts = self::available_post_types();
-
-        if( $obj_cpts ) {
+        if( $obj_cpts = self::available_post_types() ) {
             foreach( $obj_cpts as $post_type ) {
                 $field_name = str_replace('-','_', $post_type->name); 
                 
@@ -200,7 +198,7 @@ Class FX_Sitemap
     /**
      * Query the posts from custom post type
      * 
-     * @return object || null
+     * @return object|null
      */
     public function query_posts( $post_type = '' ) 
     {
@@ -290,7 +288,7 @@ Class FX_Sitemap
     /**
      * Return list of all other taxonomies
      * 
-     * @return array||null
+     * @return array|null
      */
     public function get_taxonomies()
     {
@@ -331,7 +329,7 @@ Class FX_Sitemap
     /**
      * Merge custom post types and taxonomies and simplify
      * 
-     * @return array||object
+     * @return array|object
      */
     public function merge_cpt_tax()
     {
