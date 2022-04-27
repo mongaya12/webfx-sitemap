@@ -36,6 +36,7 @@ Class FX_Sitemap
         add_action( 'admin_enqueue_scripts', array( $this, 'scripts_styles' ) );
         add_action( 'admin_menu', array( $this, 'admin_options_page' ) );
         add_action( 'admin_init', array( $this, 'save_settings' ) );
+        add_filter( 'plugin_action_links', array( $this, 'plugin_settings' ), 10, 2);
     }
 
     /**
@@ -261,7 +262,6 @@ Class FX_Sitemap
             'taxonomy'      => 'Taxonomies',
             'menu'          => 'Menus',
             'general'       => 'General',
-            'instruction'   => 'Instructions'
         );
 
         echo sprintf('<h2 class="nav-tab-wrapper">');
@@ -357,6 +357,23 @@ Class FX_Sitemap
         require_once( self::$plugin_path . '/helper-functions.php' );
         require_once( self::$plugin_path . '/fx-nav-walker.php' );
         require_once( self::$plugin_path . '/fx-sitemap-shortcode.php' );
+    }
+
+    /**
+     * Provide shortcut link to settings
+     * 
+     * @return array
+     */
+    public function plugin_settings( $links, $file ) {
+
+        $fx_sitemap = 'fx-sitemap/fx-sitemap.php';
+
+        if ($file == $fx_sitemap) {
+            $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=fx_sitemap">Settings</a>';
+            array_unshift($links, $settings_link);
+        }
+        
+        return $links;
     }
 }
 
