@@ -311,15 +311,17 @@ Class FX_Sitemap
         foreach( $post_types as $post_type ) {
             $taxonomies = get_object_taxonomies( $post_type ); 
             if( ! empty( $taxonomies ) ) {
-                $public_tax = get_taxonomy( $tax )->public; 
+                foreach( $taxonomies as $tax ) {
+                    $public_tax = get_taxonomy( $tax )->public; 
 
-                if( $public_tax == 1 ) { ##determine if taxonomy is public
-                    $terms                          = get_terms( $tax, [ 'hide_empty' => false ] );
-                    $term_label                     = get_taxonomy( $tax )->label;
-                    $taxonomy[$ctr]['label']        = $term_label;
-                    $taxonomy[$ctr]['taxonomy']     = $tax;
-                    $taxonomy[$ctr]['term']         = $terms;
-                    $ctr++;
+                    if( $public_tax == 1 ) { ##determine if taxonomy is public
+                        $terms                          = get_terms( $tax, [ 'hide_empty' => false ] );
+                        $term_label                     = get_taxonomy( $tax )->label;
+                        $taxonomy[$ctr]['label']        = $term_label;
+                        $taxonomy[$ctr]['taxonomy']     = $tax;
+                        $taxonomy[$ctr]['term']         = $terms;
+                        $ctr++;
+                    }
                 }
             }
         }
