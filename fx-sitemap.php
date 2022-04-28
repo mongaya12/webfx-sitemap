@@ -310,6 +310,7 @@ Class FX_Sitemap
         $ctr = 1;
         foreach( $post_types as $post_type ) {
             $taxonomies = get_object_taxonomies( $post_type ); 
+            
             if( ! empty( $taxonomies ) ) {
                 foreach( $taxonomies as $tax ) {
                     $public_tax = get_taxonomy( $tax )->public; 
