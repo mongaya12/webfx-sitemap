@@ -229,9 +229,35 @@
 
 input.choices__input.choices__input--cloned {
     width: 99% !important;
+    min-width: 99% !important;
 }
 
 .choices__list--multiple .choices__item {
     background-color: #4DC1B9;
     border: 1px solid #4DC1B9;
+}
+
+@media( min-width:992px ) {
+    .fx-sitemap__menus,
+    .fx-sitemap__taxonomies,
+    .fx-sitemap__cpts {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .fx-sitemap-box__item, 
+    .fx-sitemap-item__cpt {
+        min-width:50%;
+    }
+}
+
+@media( min-width:1200px ) {
+    .fx-sitemap__menus,
+    .fx-sitemap__taxonomies,
+    .fx-sitemap__cpts {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .fx-sitemap-box__item, 
+    .fx-sitemap-item__cpt {
+        min-width:33.3333333%;
+    }
 }
